@@ -1,3 +1,4 @@
+import subprocess
 import psutil
 
 def recup_server_props():
@@ -7,3 +8,9 @@ def recup_server_props():
         'cpu_usage':cpu_usage,
         'available_ram': available_ram,
     }
+
+
+def run_shell(name):
+    command = ['sudo',"bash","../shell_scripts/lancement_jeu.sh",name]
+    result = subprocess.run(command, stdout=subprocess.PIPE).stdout.decode('utf-8')
+    return result
